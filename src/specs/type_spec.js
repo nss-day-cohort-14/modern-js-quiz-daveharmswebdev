@@ -7,6 +7,9 @@ describe('specs for Type.Cycle', function() {
 	it('should behave Type defined', function() {
 		expect(testCycle).toBeDefined();
 	});
+	it('should behave such that health is 60', function() {
+		expect(testCycle.health).toEqual(60);
+	});
 	it('should have predefined turns of 3', function() {
 		expect(testCycle.turns).toEqual(3);	
 	});	
