@@ -50,4 +50,8 @@ describe('specs for Model.Crusader', function() {
 	it('should behave...such that one can add weapons', function() {
 		expect(testCrusader.weapons.length).toEqual(1);
 	});
+	it('should behave...set position prototype works', function() {
+		testCrusader.setPosition(5);
+		expect(testCrusader.position).toEqual(5);
+	});
 });

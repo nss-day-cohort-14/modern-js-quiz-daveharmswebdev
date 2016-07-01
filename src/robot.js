@@ -4,8 +4,12 @@ const Robot = function(health, movement) {
 	this.health = health || null;
 	this.movement = movement || null;
 	this.weapons = [];
+	this.position = 0;
 };
 Robot.prototype.setWeapons = function(weapon) {
 	this.weapons.push(weapon);
+};
+Robot.prototype.setPosition = function(position) {
+	this.position = position;
 };
 module.exports = Robot;
