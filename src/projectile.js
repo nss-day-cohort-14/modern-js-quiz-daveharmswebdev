@@ -9,5 +9,26 @@ const Projectile = function(short, med, long, aim, damage, rounds, weight) {
 	this.longRange = long || 0;
 	this.aim = aim || 0;
 };
+Projectile.fiftyCal = function() {
+	Weapon.call(this, 20, 20, 2);
+	this.shortRange = 5;
+	this.medRange = 10;
+	this.longRange = 20;
+	this.aim = 10;
+};
+Projectile.mSixty = function() {
+	Weapon.call(this, 15, 20, 1);
+	this.shortRange = 5;
+	this.medRange = 10;
+	this.longRange = 15;
+	this.aim = 10;
+};
+Projectile.saw = function() {
+	Weapon.call(this, 10, 20, 1);
+	this.shortRange = 5;
+	this.medRange = 10;
+	this.longRange = 15;
+	this.aim = 15;	
+};
 
 module.exports = Projectile;

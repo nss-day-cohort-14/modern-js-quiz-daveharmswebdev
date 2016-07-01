@@ -33,6 +33,16 @@ describe('specs for explosives', function() {
 			'blastRadiusLong': 0
 		}));
 	});
+	let testBoom = new Explosive.BoomBoom;
+	it('should behave...like a BoomBoom with damage of 50', function() {
+		expect(testBoom).toEqual(jasmine.objectContaining({
+			'damage': 50,
+			'rounds': 3,
+			'weight': 1,
+			'blastRadiusShort': 2,
+			'blastRadiusLong': 6
+		}));
+	});
 });
 
 describe('specs for projectiles', function() {
@@ -51,21 +61,33 @@ describe('specs for projectiles', function() {
 			'aim': 0
 		}));
 	});
+	let testFifty = new Projectile.fiftyCal();
+	it('should behave...like a fiftyCal with pedefined values', function() {
+		expect(testFifty).toEqual(jasmine.objectContaining({
+			'damage': 20,
+			'rounds': 20,
+			'weight': 2,
+			'shortRange': 5,
+			'medRange': 10,
+			'longRange': 20,
+			'aim': 10			
+		}));
+	});
 });
 
 describe('specs for rockets', function() {
-	let testRocket = new Rocket(4,5,6,7,1,2,3,8,9);
+	let testAngel = new Rocket.Angel();
 	it('should behave...successfully calls weapon and projectile and explosive', function() {
-		expect(testRocket).toEqual(jasmine.objectContaining({
-			'damage': 1,
-			'rounds': 2,
-			'weight': 3,
-			'shortRange': 4,
-			'medRange': 5,
-			'longRange': 6,
-			'aim': 7,
-			'blastRadiusShort': 8,
-			'blastRadiusLong': 9
+		expect(testAngel).toEqual(jasmine.objectContaining({
+			'damage': 30,
+			'rounds': 4,
+			'weight': 1,
+			'shortRange': 10,
+			'medRange': 20,
+			'longRange': 30,
+			'aim': 10,
+			'blastRadiusShort': 1,
+			'blastRadiusLong': 2
 		}));
 	});
 });
