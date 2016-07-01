@@ -2,24 +2,31 @@
 
 const Robot = require('../src/robot');
 
-const Type = function(turns, count, armor) {
-	this.turns = null || turns;
-	this.weaponCount = null || count;
-	this.armor = null || armor;
-};
-Type.prototype = new Robot();
+const Type = {};
 Type.Cycle = function() {
-	Type.call(this, 3, 2, 0);
+	Robot.call(this, 60, 10);
+	this.turns = 3;
+	this.weaponCount = 2;
+	this.armor = 0;
 	this.type = 'cycle';
 };
+Type.Cycle.prototype = new Robot();
 Type.Tank = function() {
-	Type.call(this, 1, 3, 2);
+	Robot.call(this, 100, 4);
+	this.turns = 1;
+	this.weaponCount = 3;
+	this.armor = 2;
 	this.type = 'tank';
 };
+Type.Tank.prototype = new Robot();
 Type.Jeep = function() {
-	Type.call(this, 2, 3, 1);
+	Robot.call(this, 80, 7);
+	this.turns = 2;
+	this.weaponCount = 3;
+	this.armor = 1;
 	this.type = 'jeep';
 };
+Type.Jeep.prototype = new Robot();
 
 
 module.exports = Type;
