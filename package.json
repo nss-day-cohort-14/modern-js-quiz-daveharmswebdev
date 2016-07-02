@@ -30,6 +30,9 @@
     "gulp": "^3.9.1",
     "gulp-jasmine": "^2.4.0",
     "jasmine": "^2.4.1",
-    "jasmine-spec-reporter": "^2.5.0"
+    "jasmine-spec-reporter": "^2.5.0",
+    "karma": "1.x || ^0.13.0",
+    "karma-jasmine": "1.x || ^0.3.6",
+    "karma-chrome-launcher": "1.x || ^0.2.0"
   }
 }
