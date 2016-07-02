@@ -14,5 +14,10 @@ Rocket.Demon = function() {
 	this.blastRadiusShort = 2;
 	this.blastRadiusLong = 4;
 };
+Rocket.Howitzer = function() {
+	Projectile.call(this, 8, 16, 24, 10, 25, 10, 1);
+	this.blastRadiusShort = 1;
+	this.blastRadiusLong = 2;
+};
  
 module.exports = Rocket;
