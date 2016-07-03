@@ -1,10 +1,35 @@
 'use strict';
+var $ = require('jQuery');
+var build = require('../views/build.jade');
 
-const Model = require('../src/model');
-const Projectile = require('../src/projectile');
+$(function() {
 
-let tornado = new Model.Tornado();
-console.log(tornado);
-tornado.setWeapons(new Projectile.saw());
+	var models = [
+		'Tornado',
+		'WhiteSquall',
+		'Achilles',
+		'Python',
+		'Crusader',
+		'Brave',
+		'Warrior'
+	];
 
-console.log(tornado);
+	var weapons = [
+		'BoomBoom',
+		'CherryBom',
+		'fiftyCal',
+		'mSixty',
+		'saw',
+		'Angel',
+		'Demon',
+		'Howitzer'
+	]
+
+	$('body').append(build({models, weapons}));
+	// $('body').append(build);
+
+	$('.build--robot').on('change', function() {
+		console.log($('.build--robot').val());
+	});
+
+});
