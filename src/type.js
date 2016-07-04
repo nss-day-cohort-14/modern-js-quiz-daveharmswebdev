@@ -6,7 +6,6 @@ const Type = {};
 Type.Cycle = function() {
 	Robot.call(this, 60, 10);
 	this.turns = 3;
-	this.weaponCount = 2;
 	this.armor = 0;
 	this.type = 'cycle';
 	this.turnMod += 5;
@@ -15,7 +14,7 @@ Type.Cycle.prototype = new Robot();
 Type.Tank = function() {
 	Robot.call(this, 100, 4);
 	this.turns = 1;
-	this.weaponCount = 3;
+	this.weaponsCapacity += 4;
 	this.armor = 2;
 	this.type = 'tank';
 };
@@ -23,7 +22,7 @@ Type.Tank.prototype = new Robot();
 Type.Jeep = function() {
 	Robot.call(this, 80, 7);
 	this.turns = 2;
-	this.weaponCount = 3;
+	this.weaponsCapacity += 2;
 	this.armor = 1;
 	this.type = 'jeep';
 	this.turnMod += 3;

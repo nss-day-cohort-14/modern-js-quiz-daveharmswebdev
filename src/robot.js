@@ -4,6 +4,7 @@ const Robot = function(health, movement) {
 	this.health = health || null;
 	this.movement = movement || null;
 	this.weapons = [];
+	this.weaponsCapacity = 2;
 	this.position = 0;
 	this.turnMod = 0;
 };
