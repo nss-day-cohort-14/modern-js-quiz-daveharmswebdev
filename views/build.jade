@@ -1,7 +1,11 @@
 div.container.build
-	select.build--robot
-		each val in models
-			option(value=val)= val
-	select.build--weapons
-		each val in weapons
-			option(value=val)= val
+	div.row
+		select.form-control.build--robot
+			each val in models
+				option(value=val)= val
+		btn.btn.build--chooseRobot Choose Model
+	div.row
+		select.form-control.build--weapons
+			each val in weapons
+				option(value=val)= val
+		btn.btn.build--addWeapon Add Weapon

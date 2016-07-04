@@ -30,12 +30,18 @@ $(function() {
 	// $('body').append(build);
 
 	$('.build--robot').on('change', function() {
-		console.log($('.build--robot').val());
 		$('.build--weapons').removeAttr('disabled', 'disabled');
 		$('.build--robot').prop('disabled', 'disabled');
 	});
 	$('.build--weapons').on('change', function() {
 		console.log($('.build--weapons').val());
-	})
+	});
+	$('.build--chooseRobot').on('click', function() {
+		let selectedModel = $('.build--robot').val();
+		console.log(selectedModel);
+	});
+	$('.build--addWeapon').on('click', function() {
+
+	});
 
 });

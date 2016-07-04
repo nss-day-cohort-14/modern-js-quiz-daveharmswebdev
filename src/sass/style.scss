@@ -1,8 +1,18 @@
 .build {
-	background-color: blue;
+	background-color: lightgrey;
+	padding: 1rem;
 	select {
-		display: block;
-		margin: 1rem;
+		display: inline-block;
+		margin: 2rem;
 		font-size: 2rem;
+		width: 30rem;
+	}
+	btn {
+		background-color: white;
+		padding: 0.5rem;
+		margin: 2rem;
+		border: 1px black solid;
+		border-radius: 0.75rem;
+		width: 20rem;
 	}
 }
