@@ -5,6 +5,7 @@ const Robot = function(health, movement) {
 	this.movement = movement || null;
 	this.weapons = [];
 	this.position = 0;
+	this.turnMod = 0;
 };
 Robot.prototype.setWeapons = function(weapon) {
 	this.weapons.push(weapon);

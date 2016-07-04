@@ -1,6 +1,8 @@
 'use strict';
 var $ = require('jQuery');
+var Model = require('../src/model');
 var build = require('../views/build.jade');
+const Battle = require('../src/battle');
 
 $(function() {
 
@@ -44,4 +46,9 @@ $(function() {
 
 	});
 
+	let testBattle = new Battle();
+	testBattle.setRobots(new Model.Achilles());
+	testBattle.setRobots(new Model.Warrior());
+	console.log(testBattle.getDistance());
+	console.log(testBattle.getFirst());
 });

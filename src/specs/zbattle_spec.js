@@ -20,21 +20,30 @@ describe('battle specs', function() {
 	let achilles = new Model.Achilles();
 	let warrior = new Model.Warrior();
 	// invoke the setter methods
-	battle.setRobotOne(achilles);
-	battle.setRobotTwo(warrior);
+	battle.setRobots(achilles);
+	battle.setRobots(warrior);
 	it('should be able to load two robots', function() {
 		// test the getter methods, which indicates the object works
-		expect(battle.getRobotOne()).toEqual(jasmine.objectContaining({
-			model: 'achilles'
-		}));
-		// testing the getter for robot two
-		expect(battle.getRobotTwo()).toEqual(jasmine.objectContaining({
-			model: 'warrior'
-		}));
+		expect(battle.getRobots()).toEqual(jasmine.arrayContaining(
+			[
+				jasmine.objectContaining({
+					model:'achilles',
+					turnMod: 0
+			}),
+				jasmine.objectContaining({
+					model: 'warrior',
+					turnMod: 3
+			})
+			]
+		));
+
 	});
 	it('should be able to return the distance between the two robots', function() {
 		achilles.position = 50;
 		warrior.position = 0;
 		expect(battle.getDistance()).toEqual(50);
+	});
+	it('should use dice to determine turn', function() {
+		expect(battle.getFirst).toBeDefined();
 	});
 });
