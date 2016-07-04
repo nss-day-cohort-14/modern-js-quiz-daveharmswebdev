@@ -33,7 +33,7 @@ describe('specs for explosives', function() {
 			'blastRadiusLong': 0
 		}));
 	});
-	let testBoom = new Explosive.BoomBoom;
+	let testBoom = new Explosive.BoomBoom();
 	it('should behave...like a BoomBoom with damage of 50', function() {
 		expect(testBoom).toEqual(jasmine.objectContaining({
 			'damage': 50,

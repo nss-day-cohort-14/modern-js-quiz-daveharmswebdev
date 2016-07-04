@@ -12,6 +12,7 @@ let sourcemaps = require('gulp-sourcemaps');
 let jadeify = require('jadeify');
 let jasmine = require('gulp-jasmine');
 let jasmineSpecReporter = require('jasmine-spec-reporter');
+let sass = require('gulp-sass');
 
 let handleError = function(task) {
   return function(err) {
@@ -83,7 +84,32 @@ gulp.task('specs', function() {
         errorOnFail: false,
     }));
 });
+/*
+  SASS SECTION
 
+  Delete or comment out if you are not using SASS
+ */
+gulp.task('sass', function() {
+  return gulp.src('./src/sass/*.scss')
+    // sourcemaps + sass + error handling
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      sourceComments: true,
+      outputStyle: 'compressed'  // nested || compressed
+    }))
+    .on('error', handleError('SASS'))
+    // generate .maps
+    .pipe(sourcemaps.write({
+      'includeContent': false,
+      'sourceRoot': '.'
+    }))
+    .pipe(sourcemaps.write({
+      'includeContent': true
+    }))
+    // write sourcemaps to a specific directory
+    // give it a file and save
+    .pipe(gulp.dest('./dist/css'));
+});
 /*
   WATCH TASK SECTION
 
@@ -94,8 +120,12 @@ gulp.task('watch', function() {
   // Run the link task when any JavaScript file changes
   gulp.watch(['./src/**/*.js'], ['lint', 'specs']);
 
+  // Run the sass task when any SCSS file changes
+  // Remov if not using SASS
+  gulp.watch('./src/sass/**/*.scss', ['sass']);
+
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
 
 // This task runs when you type `gulp` in the CLI
-gulp.task('default', ['lint', 'specs', 'watch'], bundle);
+gulp.task('default', ['lint', 'sass', 'specs', 'watch'], bundle);
