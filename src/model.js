@@ -23,6 +23,7 @@ Model.WhiteSquall.prototype = new Type.Cycle();
 Model.Achilles = function() {
 	Type.Tank.call(this);
 	this.model = 'achilles';
+	this.armer += 1;
 };
 Model.Achilles.prototype = new Type.Tank();
 // firepower
@@ -50,6 +51,7 @@ Model.Crusader = function() {
 	Type.Jeep.call(this);
 	this.model = 'crusader';
 	this.turnMod -= 1;
+	this.armer += 1;
 };
 Model.Crusader.prototype = new Type.Jeep();
 
