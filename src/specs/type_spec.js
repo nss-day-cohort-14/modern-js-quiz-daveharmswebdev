@@ -14,7 +14,8 @@ describe('specs for Type.Cycle', function() {
 		expect(testCycle.turns).toEqual(3);	
 	});	
 	it('should have predefiend weapon count of 2', function() {
-		expect(testCycle.weaponCount).toEqual(2);
+		console.log(testCycle);
+		expect(testCycle.weaponsCapacity).toEqual(2);
 	});
 	it('should have predefined armor of 0', function() {
 		expect(testCycle.armor).toEqual(0);
@@ -30,7 +31,7 @@ describe('specs for Type.Tank', function() {
 		expect(testTank.turns).toEqual(1);	
 	});	
 	it('should have predefiend weapon count of 2', function() {
-		expect(testTank.weaponCount).toEqual(3);
+		expect(testTank.weaponsCapacity).toEqual(6);
 	});
 	it('should have predefined armor of 0', function() {
 		expect(testTank.armor).toEqual(2);
@@ -46,7 +47,7 @@ describe('specs for Type.Jeep', function() {
 		expect(testJeep.turns).toEqual(2);	
 	});	
 	it('should have predefiend weapon count of 2', function() {
-		expect(testJeep.weaponCount).toEqual(3);
+		expect(testJeep.weaponsCapacity).toEqual(4);
 	});
 	it('should have predefined armor of 0', function() {
 		expect(testJeep.armor).toEqual(1);
