@@ -9,6 +9,7 @@ Type.Cycle = function() {
 	this.armor = 0;
 	this.type = 'cycle';
 	this.turnMod += 5;
+	this.actions = 3;
 };
 Type.Cycle.prototype = new Robot();
 Type.Tank = function() {
@@ -17,6 +18,7 @@ Type.Tank = function() {
 	this.weaponsCapacity += 4;
 	this.armor = 2;
 	this.type = 'tank';
+	this.actions = 1;
 };
 Type.Tank.prototype = new Robot();
 Type.Jeep = function() {
@@ -26,6 +28,7 @@ Type.Jeep = function() {
 	this.armor = 1;
 	this.type = 'jeep';
 	this.turnMod += 3;
+	this.actions = 2;
 };
 Type.Jeep.prototype = new Robot();
 
