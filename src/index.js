@@ -2,6 +2,7 @@
 var $ = require('jQuery');
 var Model = require('../src/model');
 var build = require('../views/build.jade');
+var build_weapons = require('../views/build_weapons.jade');
 const Battle = require('../src/battle');
 
 $(function() {
@@ -29,6 +30,17 @@ $(function() {
 
 	let battle = new Battle();
 	let robot;
+	// let totalWeight = function(arr) {
+	// 	arr.reduce((prev, curr) => prev+curr);
+	// };
+	function totalWeight(arr) {
+		let weight = arr.reduce(function(prev, curr) {
+			console.log(prev, curr);
+			return prev+curr;
+		});
+		return weight;
+	};
+
 
 	$('body').append(build({models, weapons}));
 	$('.build--weapons').prop('disabled', 'disabled');
@@ -38,20 +50,24 @@ $(function() {
 		$('.build--weapons').removeAttr('disabled', 'disabled');
 		$('.build--robot').prop('disabled', 'disabled');
 	});
-	$('.build--weapons').on('change', function() {
-		console.log($('.build--weapons').val());
-	});
+	// $('.build--weapons').on('change', function() {
+	// 	console.log($('.build--weapons').val());
+	// });
 	$('.build--chooseRobot').on('click', function() {
 		let selectedModel = $('.build--robot').val();
 		robot = new Model[selectedModel]();
 		console.log(robot);
 	});
 	$('.build--addWeapon').on('click', function() {
-		console.log('capacity:', robot.weaponsCapacity, 'current weapons:', robot.weapons.length);
 		let selectedWeapon = $('.build--weapons').val();
-		console.log('selected weapon', selectedWeapon);
+		// will selected weapon exceed capacity
+		// if no push weapon, if yes force user to select another weapon
 		robot.setWeapons(selectedWeapon);
-		console.log(robot.weapons);
+		debugger;
+		let currentCapacity = robot.weaponsCapacity - totalWeight(robot.weapons);
+		$('.build--display--weaponscap').empty();
+		$('.build--display--weaponscap').append(build_weapons({capacity: currentCapacity, weapons: robot.weapons}));
+		if (currentCapacity === 0) alert('zero');
 	});
 
 });
