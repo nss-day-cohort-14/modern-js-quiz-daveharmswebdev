@@ -1,9 +1,11 @@
 'use strict';
-var $ = require('jQuery');
-var Model = require('../src/model');
-var build = require('../views/build.jade');
-var build_weapons = require('../views/build_weapons.jade');
+const $ = require('jQuery');
+const Model = require('../src/model');
+const build = require('../views/build.jade');
+const build_weapons = require('../views/build_weapons.jade');
+const Arms = require('../src/arms');
 const Battle = require('../src/battle');
+const thunderdome = require('../views/thunderdome.jade');
 
 $(function() {
 
@@ -18,14 +20,14 @@ $(function() {
 	];
 
 	var weapons = [
-		'BoomBoom',
-		'CherryBom',
-		'fiftyCal',
-		'mSixty',
-		'saw',
-		'Angel',
-		'Demon',
-		'Howitzer'
+		{val: 'Explosive.BoomBoom',name: 'BoomBoom'},
+		{val: 'Explosive.CherryBomb',name: 'CherryBom'},
+		{val: 'Projectile.fiftyCal',name: 'fiftyCal'},
+		{val: 'Projectile.mSixty',name: 'mSixty'},
+		{val: 'Projectile.saw',name: 'saw'},
+		{val: 'Rocket.Angel',name: 'Angel'},
+		{val: 'Rocket.Demon',name: 'Demon'},
+		{val: 'Rocket.Howitzer',name: 'Howitzer'}
 	];
 
 	let battle = new Battle();
@@ -39,11 +41,19 @@ $(function() {
 			return prev+curr;
 		});
 		return weight;
-	};
+	}
+
+	function chooseChallenger() {
+		let challenger = new Model.Achilles();
+		console.log('challenger', challenger);
+		battle.setRobots(challenger);
+		console.log('challenger battle', battle, battle.getRobots());
+	}
 
 
 	$('body').append(build({models, weapons}));
 	$('.build--weapons').prop('disabled', 'disabled');
+
 	// $('body').append(build);
 
 	$('.build--robot').on('change', function() {
@@ -62,12 +72,29 @@ $(function() {
 		let selectedWeapon = $('.build--weapons').val();
 		// will selected weapon exceed capacity
 		// if no push weapon, if yes force user to select another weapon
-		robot.setWeapons(selectedWeapon);
-		debugger;
-		let currentCapacity = robot.weaponsCapacity - totalWeight(robot.weapons);
-		$('.build--display--weaponscap').empty();
-		$('.build--display--weaponscap').append(build_weapons({capacity: currentCapacity, weapons: robot.weapons}));
-		if (currentCapacity === 0) alert('zero');
+		// let selectedWeapon = new Weapon();
+		selectedWeapon = selectedWeapon.split('.');
+		selectedWeapon = new Arms[selectedWeapon[0]][selectedWeapon[1]]();
+		if (selectedWeapon.weight <= robot.weaponsCapacity) {
+			robot.setWeapons(selectedWeapon);
+			console.log(robot, robot.weaponsCapacity);
+			$('.build--display--weaponscap').empty();
+			$('.build--display--weaponscap').append(build_weapons({capacity: robot.weaponsCapacity, weapons: robot.weapons}));
+			if (robot.weaponsCapacity === 0) alert('zero');
+			// let currentCapacity = robot.weaponsCapacity - totalWeight(robot.weapons);
+		} else {
+			alert('you do not have enough capacity for this weapon');
+		}
+	});
+
+	$('.build--fight').on('click', () => {
+		console.log('click');
+		battle.setRobots(robot);
+		chooseChallenger();
+		$('.build').remove();
+		let player = battle.getRobots()[0];
+		let challenger = battle.getRobots()[1];
+		$('body').append(thunderdome({player, challenger}));
 	});
 
 });

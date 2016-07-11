@@ -10,6 +10,7 @@ const Robot = function(health, movement) {
 };
 Robot.prototype.setWeapons = function(weapon) {
 	this.weapons.push(weapon);
+	this.weaponsCapacity -= weapon.weight;
 };
 Robot.prototype.setPosition = function(position) {
 	this.position = position;

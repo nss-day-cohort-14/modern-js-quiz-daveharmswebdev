@@ -7,7 +7,9 @@ div.container.build
 	div.row
 		select.form-control.build--weapons
 			each val in weapons
-				option(value=val)= val
+				option(value=val.val)= val.name
 		btn.btn.build--addWeapon Add Weapon
 	div.jumbotrom.build--display
 		h2.build--display--weaponscap
+	div.row
+		btn.btn.build--fight Fight!

@@ -2,7 +2,7 @@
 
 const Robot = require('../robot');
 
-describe('robot specs', function() {
+xdescribe('robot specs', function() {
 	let testRobot = new Robot();
 	it('Robot will be defined', function() {
 		expect(testRobot).toBeDefined();

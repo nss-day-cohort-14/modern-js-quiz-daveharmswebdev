@@ -80,6 +80,8 @@ gulp.task('specs', function() {
     .pipe(jasmine({
         reporter: new jasmineSpecReporter({
         displayFailuresSummary: false,
+        displayPendingSummary: false,
+        displayPendingSpec: false
         }),
         errorOnFail: false,
     }));

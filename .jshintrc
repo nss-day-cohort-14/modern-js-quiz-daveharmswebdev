@@ -12,5 +12,6 @@
   	"after": false,
   	"afterEach": false,
     "jasmine": false
-  }
+  },
+  "jasmine": true
 }

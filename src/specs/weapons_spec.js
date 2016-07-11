@@ -5,7 +5,7 @@ const Explosive = require('../explosive');
 const Projectile = require('../projectile');
 const Rocket = require('../rocket');
 
-describe('specs for weapons', function() {
+xdescribe('specs for weapons', function() {
 	let testWeapon = new Weapon();
 	it('should behave...such that Weapon is defined', function() {
 		expect(testWeapon).toBeDefined();
@@ -19,7 +19,7 @@ describe('specs for weapons', function() {
 	});
 });
 
-describe('specs for explosives', function() {
+xdescribe('specs for explosives', function() {
 	let testExplosive = new Explosive();
 	it('should behave...Explosive is defined', function() {
 		expect(testExplosive).toBeDefined();
@@ -45,7 +45,7 @@ describe('specs for explosives', function() {
 	});
 });
 
-describe('specs for projectiles', function() {
+xdescribe('specs for projectiles', function() {
 	let testProjectile = new Projectile();
 	it('should behave...Projectile is defined', function() {
 		expect(testProjectile).toBeDefined();
@@ -75,7 +75,7 @@ describe('specs for projectiles', function() {
 	});
 });
 
-describe('specs for rockets', function() {
+xdescribe('specs for rockets', function() {
 	let testAngel = new Rocket.Angel();
 	it('should behave...successfully calls weapon and projectile and explosive', function() {
 		expect(testAngel).toEqual(jasmine.objectContaining({
