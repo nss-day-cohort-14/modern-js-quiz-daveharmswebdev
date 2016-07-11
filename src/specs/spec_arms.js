@@ -3,11 +3,11 @@
 const Arms = require('../arms');
 const Model = require('../model');
 
-describe('specs for arms', function() {
+xdescribe('specs for arms', function() {
 	let testAchilles = new Model.Achilles();
 	let testAngel = new Arms.Rocket.Angel();
 	testAchilles.setWeapons(testAngel);
-	console.log(testAchilles);
+	// console.log(testAchilles);
 	it('arms.rocket should be defined', function() {
 		expect(testAngel).toBeDefined();
 	});
@@ -17,7 +17,7 @@ describe('specs for arms', function() {
 			]);
 	});
 	it('should be aware of weapons capacity and not exceed it', function() {
-		console.log(testAchilles.weaponsCapacity);
+		// console.log(testAchilles.weaponsCapacity);
 		expect(testAchilles.weaponsCapacity).toBe(5);
 	});
 });

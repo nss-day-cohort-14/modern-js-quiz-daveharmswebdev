@@ -4,11 +4,20 @@ div.thunderdome
 	div.row
 		div.thunder--player
 			p= player.health
-				select
-					each index, val in player.weapons
-						option(value=index)= val
+			select
+				- console.log(player.weapons);
+				each val, index in player.weapons
+					- console.log('within each', index, val.name)
+					option(value=index)= val.name
+			div.btn-grp(role='group', aria-label='...')
+				button#moveTo.btn.btn-default.pControl(type='button') Move Towards
+				button#moveAway.btn.btn-default.pControl(type='button') Move Away
+				button#aim.btn.btn-default.pControl(type='button') Aim
+				button#fire.btn.btn-default.pControl(type='button') Fire
+				button#changeWeapon.btn.btn-default.pControl(type='button') Change Weapons
+
 		div.thunder--challenger
 			p= challenger.health
-				ul
-					each val in challenger.weapons
-						li= val
+			ul
+				each val in challenger.weapons
+					li= val
