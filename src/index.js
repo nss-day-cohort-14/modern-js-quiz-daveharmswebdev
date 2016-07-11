@@ -97,6 +97,28 @@ $(function() {
 		$('body').append(thunderdome({player, challenger}));
 	});
 
+	$('body').on('click', '.pControl', () => {
+		switch (event.target.id) {
+			case 'moveTo': battle.moveTo();
+			break;
+			case 'moveAway':battle.moveAway();
+			break;
+			case 'aim': battle.aim();
+			break;
+			case 'fire': battle.fire();
+			break;
+			case 'changeWeapon': battle.changeWeapon();
+			break;
+
+		}
+	});
+
+	// $('body').on('click', '#moveTo', () => {console.log('move to');});
+	// $('body').on('click', '#moveAway', () => {console.log('move away');});
+	// $('body').on('click', '#aim', () => {console.log('aim');});
+	// $('body').on('click', '#fire', () => {console.log('fire');});
+	// $('body').on('click', '#changeWeapon', () => {console.log('change weapon');});
+
 });
 	// let testBattle = new Battle();
 	// testBattle.setRobots(new Model.Achilles());
