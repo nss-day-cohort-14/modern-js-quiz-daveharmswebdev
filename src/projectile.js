@@ -11,6 +11,7 @@ const Projectile = function(short, med, long, aim, damage, rounds, weight) {
 };
 Projectile.fiftyCal = function() {
 	Weapon.call(this, 20, 20, 2);
+	this.name = 'Fifty Cal';
 	this.shortRange = 5;
 	this.medRange = 10;
 	this.longRange = 20;
@@ -18,6 +19,7 @@ Projectile.fiftyCal = function() {
 };
 Projectile.mSixty = function() {
 	Weapon.call(this, 15, 20, 1);
+	this.name = 'M60';
 	this.shortRange = 5;
 	this.medRange = 10;
 	this.longRange = 15;
@@ -25,6 +27,7 @@ Projectile.mSixty = function() {
 };
 Projectile.saw = function() {
 	Weapon.call(this, 10, 20, 1);
+	this.name = 'S.A.W.';
 	this.shortRange = 5;
 	this.medRange = 10;
 	this.longRange = 15;

@@ -17,6 +17,7 @@ Model.WhiteSquall = function() {
 	Type.Cycle.call(this);
 	this.model = 'white squall';
 	this.turnMod += 2;
+	console.log(this);
 };
 Model.WhiteSquall.prototype = new Type.Cycle();
 // armor

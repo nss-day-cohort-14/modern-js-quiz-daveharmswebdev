@@ -6,6 +6,7 @@ const Battle = function() {
 	let robots =[];
 
 	this.setRobots = (robot) => {
+		console.log('passed in robot object', robot);
 		robots.push(robot);
 		if (robots.length === 1) {
 			robots[0].position = 0;

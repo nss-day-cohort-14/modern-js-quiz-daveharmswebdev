@@ -9,11 +9,13 @@ const Explosive = function(shortRadius, longRadius, damage, rounds, weight) {
 };
 Explosive.BoomBoom = function() {
 	Weapon.call(this, 50, 3, 1);
+	this.name = 'Boom Boom';
 	this.blastRadiusShort = 2;
 	this.blastRadiusLong = 6;
 };
 Explosive.CherryBomb = function() {
 	Weapon.call(this, 50, 3, 1);
+	this.name = 'Cherry Bomb';
 	this.blastRadiusShort = 1;
 	this.blastRadiusLong = 0;
 };

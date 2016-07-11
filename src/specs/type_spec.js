@@ -2,7 +2,7 @@
 
 const Type = require('../type');
 
-describe('specs for Type.Cycle', function() {
+xdescribe('specs for Type.Cycle', function() {
 	let testCycle = new Type.Cycle(); 
 	it('should behave Type defined', function() {
 		expect(testCycle).toBeDefined();
@@ -22,7 +22,7 @@ describe('specs for Type.Cycle', function() {
 	});
 });
 
-describe('specs for Type.Tank', function() {
+xdescribe('specs for Type.Tank', function() {
 	let testTank = new Type.Tank(); 
 	it('should behave Type defined', function() {
 		expect(testTank).toBeDefined();
@@ -38,7 +38,7 @@ describe('specs for Type.Tank', function() {
 	});
 });
 
-describe('specs for Type.Jeep', function() {
+xdescribe('specs for Type.Jeep', function() {
 	let testJeep = new Type.Jeep(); 
 	it('should behave Type defined', function() {
 		expect(testJeep).toBeDefined();

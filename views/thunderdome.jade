@@ -1,0 +1,14 @@
+div.thunderdome
+	- console.log(player, challenger);
+	h1 Two Enter One Leaves
+	div.row
+		div.thunder--player
+			p= player.health
+				select
+					each index, val in player.weapons
+						option(value=index)= val
+		div.thunder--challenger
+			p= challenger.health
+				ul
+					each val in challenger.weapons
+						li= val

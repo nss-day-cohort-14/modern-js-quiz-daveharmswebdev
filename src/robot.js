@@ -9,8 +9,8 @@ const Robot = function(health, movement) {
 	this.turnMod = 0;
 };
 Robot.prototype.setWeapons = function(weapon) {
-	console.log('passed weapon', weapon)
 	this.weapons.push(weapon);
+	this.weaponsCapacity -= weapon.weight;
 };
 Robot.prototype.setPosition = function(position) {
 	this.position = position;

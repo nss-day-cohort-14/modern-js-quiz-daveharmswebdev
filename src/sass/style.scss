@@ -15,4 +15,15 @@
 		border-radius: 0.75rem;
 		width: 20rem;
 	}
+	.build--display {
+		min-height: 30rem;
+		background-color: lightblue;
+	}
+}
+
+.thunderdome {
+	.thunder--player, .thunder--challenger {
+		padding: 2rem;
+		margin: 1rem;
+	}
 }
