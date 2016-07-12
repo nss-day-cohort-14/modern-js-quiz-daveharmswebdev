@@ -75,10 +75,25 @@ describe('battle specs', function() {
 		expect(battle.getRobots()[0].position).toBe(34);
 		expect(battle.getRobots()[1].position).toBe(13);
 	});
-	it('should be able to resolve firing at an enemy', function() {
-		let die = new Dice(10);
-		let roll = die.roll()[0];
-		console.log(roll);
-		battle.fire(0);
+	xit('should be able to resolve firing at an enemy', function() {
+		achilles.position = 36;
+		for (let x = 0; x < 20; x++) {
+			let die = new Dice(10);
+			let roll = die.roll()[0];
+			console.log(battle.fire(0, roll));
+		}
+	});
+	it('should be able to resolve damage and reduce health of the other robot', function() {
+		// healthAlpha will represent the health of a robot prior to damage being done
+		let healthAlpha = battle.getRobots()[0].health;
+		// will console log out healthAlpha and damage into the terminal via gulp-jasmine
+		console.log('healthAlpha', healthAlpha);
+		console.log(battle.damage(1));
+		// create healthBeta, which represents health of robot after damage is done
+		let healthBeta = battle.getRobots()[0].health;
+		// console log it out as well
+		console.log('healthBeta', healthBeta);
+		// compare via expect statement
+		expect(healthBeta).toBeLessThan(healthAlpha);
 	});
 });
