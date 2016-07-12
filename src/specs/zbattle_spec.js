@@ -75,10 +75,20 @@ describe('battle specs', function() {
 		expect(battle.getRobots()[0].position).toBe(34);
 		expect(battle.getRobots()[1].position).toBe(13);
 	});
-	it('should be able to resolve firing at an enemy', function() {
-		let die = new Dice(10);
-		let roll = die.roll()[0];
-		console.log(roll);
-		battle.fire(0);
+	xit('should be able to resolve firing at an enemy', function() {
+		achilles.position = 36;
+		for (let x = 0; x < 20; x++) {
+			let die = new Dice(10);
+			let roll = die.roll()[0];
+			console.log(battle.fire(0, roll));
+		}
+	});
+	it('should be able to resolve damage and reduce health of the other robot', function() {
+		let healthAlpha = battle.getRobots()[0].health;
+		console.log('healthAlpha', healthAlpha);
+		console.log(battle.damage(1));
+		let healthBeta = battle.getRobots()[0].health;
+		console.log('healthBeta', healthBeta);
+		expect(healthBeta).toBeLessThan(healthAlpha);
 	});
 });

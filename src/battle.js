@@ -72,9 +72,22 @@ const Battle = function() {
 	};
 	this.aim = (battle) => {console.log('aim', battle);};
 	this.fire = (arg, roll) => {
-		console.log('robot' + arg + ' weapon: ' + robots[arg].weapons[0].name);
-		// console.log('robot' + arg + ' weapon: ' + this.robots[arg].weapons[0]);
-		console.log('this.fire(): ', this.getDistance());
+		let hit;
+		if (this.getDistance() < robots[arg].weapons[0].shortRange && roll < 9) {
+			hit = true;
+		} else if (this.getDistance() < robots[arg].weapons[0].medRange && roll < 7){
+			hit = true;
+		} else if (this.getDistance() < robots[arg].weapons[0].longRange && roll < 4){
+			hit = true;
+		} else {
+			hit = false;
+		}
+		return hit;
+	};
+	this.damage = (arg) => {
+		let damage = robots[arg].weapons[0].damage + Math.floor((Math.random() * 20) - 9);
+		arg === 0 ? robots[1].health -= damage : robots[0].health -= damage;
+		return damage;
 	};
 	this.changeWeapon = (battle) => {console.log('changeWeapon', battle);};
 };
