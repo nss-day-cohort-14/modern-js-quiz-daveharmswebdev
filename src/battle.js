@@ -93,6 +93,12 @@ const Battle = function() {
 		return damage;
 	};
 	this.changeWeapon = (battle) => {console.log('changeWeapon', battle);};
+	this.getResults = function() {
+		let results = {};
+		results.playerHealth = robots[0].health;
+		results.challengerHealth = robots[1].health;
+		return results;
+	};
 };
 
 

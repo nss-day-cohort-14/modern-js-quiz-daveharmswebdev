@@ -83,7 +83,7 @@ describe('battle specs', function() {
 			console.log(battle.fire(0, roll));
 		}
 	});
-	it('should be able to resolve damage and reduce health of the other robot', function() {
+	xit('should be able to resolve damage and reduce health of the other robot', function() {
 		// healthAlpha will represent the health of a robot prior to damage being done
 		let healthAlpha = battle.getRobots()[0].health;
 		// will console log out healthAlpha and damage into the terminal via gulp-jasmine
@@ -95,5 +95,17 @@ describe('battle specs', function() {
 		console.log('healthBeta', healthBeta);
 		// compare via expect statement
 		expect(healthBeta).toBeLessThan(healthAlpha);
+	});
+	it('should be able to deliver a results object', function() {
+		battle.damage(0);
+		battle.damage(1);
+		let playerHealth = battle.getRobots()[0].health;
+		let challengerHealth = battle.getRobots()[1].health;
+		console.log('player: ' + playerHealth, 'challenger: ' + challengerHealth);
+		expect(battle.getResults()).toEqual(jasmine.objectContaining({
+			playerHealth: playerHealth,
+			challengerHealth: challengerHealth
+		}));
+		console.log(battle.getResults());
 	});
 });
