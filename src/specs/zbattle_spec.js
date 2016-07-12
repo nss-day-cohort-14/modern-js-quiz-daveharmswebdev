@@ -97,15 +97,26 @@ describe('battle specs', function() {
 		expect(healthBeta).toBeLessThan(healthAlpha);
 	});
 	it('should be able to deliver a results object', function() {
-		battle.damage(0);
-		battle.damage(1);
+		// playerDamage is damage created by player
+		let playerDamage = battle.damage(0);
+		// challengerDamage is damage created by challenger
+		let challengerDamage = battle.damage(1);
 		let playerHealth = battle.getRobots()[0].health;
 		let challengerHealth = battle.getRobots()[1].health;
-		console.log('player: ' + playerHealth, 'challenger: ' + challengerHealth);
-		expect(battle.getResults()).toEqual(jasmine.objectContaining({
+		battle.getRobots()[0].setCurrentWeapon(0);
+		battle.getRobots()[1].setCurrentWeapon(0);
+		let bResults = battle.getResults(playerDamage, challengerDamage);
+		console.log('player: ' + playerHealth, 'challenger: ' + challengerHealth, 'pDamage: ' + playerDamage, 'cDamage: ' + challengerDamage);
+		expect(bResults).toEqual(jasmine.objectContaining({
 			playerHealth: playerHealth,
 			challengerHealth: challengerHealth
 		}));
-		console.log(battle.getResults());
+		console.log(bResults);
+		console.log(battle.getRobots());
+	});
+	it('should be such that playerTurns are set and adjusted', function() {
+		battle.setTurns(battle.getRobots()[1].turns);
+		battle.setTurns(battle.getTurns() -1);
+		expect(battle.getTurns()).toBe(1);
 	});
 });

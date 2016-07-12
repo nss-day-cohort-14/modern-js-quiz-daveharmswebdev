@@ -7,6 +7,10 @@ const Robot = function(health, movement) {
 	this.weaponsCapacity = 2;
 	this.position = 0;
 	this.turnMod = 0;
+	this.currentWeapon = null;
+};
+Robot.prototype.setCurrentWeapon = function(index) {
+	this.currentWeapon = index;
 };
 Robot.prototype.setWeapons = function(weapon) {
 	this.weapons.push(weapon);

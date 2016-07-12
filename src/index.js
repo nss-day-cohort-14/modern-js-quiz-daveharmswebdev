@@ -45,9 +45,9 @@ $(function() {
 
 	function chooseChallenger() {
 		let challenger = new Model.Achilles();
-		console.log('challenger', challenger);
+		// console.log('challenger', challenger);
 		battle.setRobots(challenger);
-		console.log('challenger battle', battle, battle.getRobots());
+		// console.log('challenger battle', battle, battle.getRobots());
 	}
 
 
@@ -94,15 +94,24 @@ $(function() {
 		$('.build').remove();
 		let player = battle.getRobots()[0];
 		let challenger = battle.getRobots()[1];
-		$('body').append(thunderdome({player, challenger}));
+		let distance = battle.getDistance();
+		battle.setTurns(battle.getRobots()[0].turns)
+		let moves = battle.getTurns();
+		$('body').append(thunderdome({player, challenger, distance, moves}));
 	});
 
 	$('body').on('click', '.pControl', () => {
 		switch (event.target.id) {
-			case 'moveTo': battle.moveTo();
-			break;
-			case 'moveAway':battle.moveAway();
-			break;
+			case 'moveTo': {
+				battle.moveTo();
+				$('.distance--content').html(battle.getDistance());
+				break;
+			}
+			case 'moveAway': {
+				battle.moveAway();
+				$('.distance--content').html(battle.getDistance());
+				break;
+			}
 			case 'aim': battle.aim();
 			break;
 			case 'fire': battle.fire();
@@ -111,17 +120,10 @@ $(function() {
 			break;
 
 		}
+		battle.setTurns(battle.getTurns() -1);
+		$('.moves--content').html(battle.getTurns());
+		if (battle.getTurns() === 0) {
+			battle.challengerTurn();
+		}
 	});
-
-	// $('body').on('click', '#moveTo', () => {console.log('move to');});
-	// $('body').on('click', '#moveAway', () => {console.log('move away');});
-	// $('body').on('click', '#aim', () => {console.log('aim');});
-	// $('body').on('click', '#fire', () => {console.log('fire');});
-	// $('body').on('click', '#changeWeapon', () => {console.log('change weapon');});
-
 });
-	// let testBattle = new Battle();
-	// testBattle.setRobots(new Model.Achilles());
-	// testBattle.setRobots(new Model.Warrior());
-	// console.log(testBattle.getDistance());
-	// console.log(testBattle.getFirst());
