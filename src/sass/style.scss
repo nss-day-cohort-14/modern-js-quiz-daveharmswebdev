@@ -1,3 +1,7 @@
+.devel {
+	border: 1px dashed pink;
+}
+
 .build {
 	background-color: lightgrey;
 	padding: 1rem;
@@ -25,5 +29,15 @@
 	.thunder--player, .thunder--challenger {
 		padding: 2rem;
 		margin: 1rem;
+		font-size: 2rem;
+		select, button {
+			margin: 1rem;
+		}
+	}
+	.distance {
+		p {
+			padding: 1rem;
+			font-size: 2rem;
+		}
 	}
 }

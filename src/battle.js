@@ -4,9 +4,13 @@ const Dice = require('../src/dice');
 
 const Battle = function() {
 	let robots =[];
+	let playerTurns = null;
 
+	this.setTurns = (turns) => {
+		playerTurns = turns;
+	};
+	this.getTurns = () => playerTurns;
 	this.setRobots = (robot) => {
-		console.log('passed in robot object', robot);
 		robots.push(robot);
 		if (robots.length === 1) {
 			robots[0].position = 0;
@@ -93,10 +97,17 @@ const Battle = function() {
 		return damage;
 	};
 	this.changeWeapon = (battle) => {console.log('changeWeapon', battle);};
-	this.getResults = function() {
+	this.getResults = function(pd, cd) {
+		console.log('pd within getResults function', pd);
 		let results = {};
+		results.pDamage = pd;
+		results.cDamage = cd;
 		results.playerHealth = robots[0].health;
 		results.challengerHealth = robots[1].health;
+		results.playerWeapon = robots[0].weapons[robots[0].currentWeapon].name;
+		results.challengerWeapon = robots[1].weapons[robots[1].currentWeapon].name;
+		results.playerStatus = robots.map((robot) => robot.health < 0 ? 'destroyed' : 'functional')[0];
+		results.challengerStatus = robots.map((robot) => robot.health < 0 ? 'destroyed' : 'functional')[1];
 		return results;
 	};
 };

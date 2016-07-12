@@ -1,6 +1,7 @@
 div.container.build
 	div.row
 		select.form-control.build--robot
+			option(value=-1) Choose Robot Model
 			each val in models
 				option(value=val)= val
 		btn.btn.build--chooseRobot Choose Model

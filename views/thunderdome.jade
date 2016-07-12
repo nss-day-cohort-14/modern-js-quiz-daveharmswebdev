@@ -1,9 +1,9 @@
-div.thunderdome
+div.thunderdome.container
 	- console.log(player, challenger);
 	h1 Two Enter One Leaves
 	div.row
 		div.thunder--player
-			p= player.health
+			p= 'Player Health: ' + player.health
 			select
 				- console.log(player.weapons);
 				each val, index in player.weapons
@@ -17,7 +17,10 @@ div.thunderdome
 				button#changeWeapon.btn.btn-default.pControl(type='button') Change Weapons
 
 		div.thunder--challenger
-			p= challenger.health
+			p= 'Challenger Health: ' + challenger.health
 			ul
 				each val in challenger.weapons
 					li= val
+	div.distance.devel
+		p.moves--content.devel= 'Moves: ' + moves
+		p.distance--content.devel= 'Distance: ' + distance
