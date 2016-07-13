@@ -1,3 +1,19 @@
+# Install Instructions
+Run npm install at the command line after cloning.
+```bash
+npm install
+```
+
+then run `gulp`
+
+#Play instructions
+1. Build robot by selecting from drop down box and select button.
+2. Select weapons with the next drop down box and select button.
+3. Motorcycles get 3 turns before the challenger tank reacts, jeeps get two, and tanks get 1.
+4. Distance and range is a factor
+
+
+
 # Modern JavaScript Developer Quiz
 # Robot Battledome
 
