@@ -97,11 +97,25 @@ const Battle = function() {
 		return damage;
 	};
 	this.changeWeapon = (battle) => {console.log('changeWeapon', battle);};
+	this.challengerTurn = () => {
+		console.log('this.challengerTurn()');
+		this.setTurns(robots[0].turns);
+		console.log('player turns', playerTurns);
+		if (this.getDistance() < robots[1].weapons[robots[1].currentWeapon].longRange) {
+			let roll = new Dice(1,10).roll()[0];
+			if (this.fire(1,roll)) return this.damage(1);
+		} else {
+			console.log('challenger moves');
+			this.moveTo(1);
+			return 0;
+		}
+	};
 	this.getResults = function(pd, cd) {
-		console.log('pd within getResults function', pd);
 		let results = {};
-		results.pDamage = pd;
-		results.cDamage = cd;
+		results.pPosition = robots[0].position;
+		results.cPosition = robots[1].position;
+		results.pDamage = pd || 0;
+		results.cDamage = cd || 0;
 		results.playerHealth = robots[0].health;
 		results.challengerHealth = robots[1].health;
 		results.playerWeapon = robots[0].weapons[robots[0].currentWeapon].name;

@@ -19,8 +19,8 @@ div.thunderdome.container
 		div.thunder--challenger
 			p= 'Challenger Health: ' + challenger.health
 			ul
+				- console.log(challenger.weapons);
 				each val in challenger.weapons
-					li= val
-	div.distance.devel
-		p.moves--content.devel= 'Moves: ' + moves
-		p.distance--content.devel= 'Distance: ' + distance
+					- console.log(val);
+					li= val.name
+	div.thunderdome--results
