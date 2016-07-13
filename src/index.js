@@ -6,6 +6,8 @@ const build_weapons = require('../views/build_weapons.jade');
 const Arms = require('../src/arms');
 const Battle = require('../src/battle');
 const thunderdome = require('../views/thunderdome.jade');
+const results = require('../views/results.jade');
+const Dice = require('../src/dice');
 
 $(function() {
 
@@ -45,6 +47,8 @@ $(function() {
 
 	function chooseChallenger() {
 		let challenger = new Model.Achilles();
+		challenger.setWeapons(new Arms.Rocket.Howitzer());
+		challenger.setCurrentWeapon(0);
 		// console.log('challenger', challenger);
 		battle.setRobots(challenger);
 		// console.log('challenger battle', battle, battle.getRobots());
@@ -101,29 +105,43 @@ $(function() {
 	});
 
 	$('body').on('click', '.pControl', () => {
+		let pDamage = 0, cDamage = 0;
 		switch (event.target.id) {
 			case 'moveTo': {
-				battle.moveTo();
+				battle.moveTo(0);
 				$('.distance--content').html(battle.getDistance());
 				break;
 			}
 			case 'moveAway': {
-				battle.moveAway();
+				battle.moveAway(0);
 				$('.distance--content').html(battle.getDistance());
 				break;
 			}
-			case 'aim': battle.aim();
-			break;
-			case 'fire': battle.fire();
-			break;
-			case 'changeWeapon': battle.changeWeapon();
-			break;
-
+			case 'aim': {
+				battle.aim();
+				break;
+			}
+			case 'fire': {
+				let roll = new Dice(1,10).roll()[0];
+				if (battle.fire(0,roll)) {
+					pDamage = battle.damage(0);
+				}
+				break;
+			}
+			case 'changeWeapon': {
+				battle.changeWeapon();
+				break;
+			}
 		}
 		battle.setTurns(battle.getTurns() -1);
 		$('.moves--content').html(battle.getTurns());
 		if (battle.getTurns() === 0) {
-			battle.challengerTurn();
+			cDamage = battle.challengerTurn();
+			console.log('cDamage: ', cDamage);
 		}
+		let fightResults = battle.getResults(pDamage, cDamage);
+		console.log(fightResults);
+		$('.thunderdome--results').empty();
+		$('.thunderdome--results').append(results({fightResults: fightResults}));
 	});
 });

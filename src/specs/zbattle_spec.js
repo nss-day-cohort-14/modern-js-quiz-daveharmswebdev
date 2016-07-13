@@ -96,7 +96,7 @@ describe('battle specs', function() {
 		// compare via expect statement
 		expect(healthBeta).toBeLessThan(healthAlpha);
 	});
-	it('should be able to deliver a results object', function() {
+	xit('should be able to deliver a results object', function() {
 		// playerDamage is damage created by player
 		let playerDamage = battle.damage(0);
 		// challengerDamage is damage created by challenger
@@ -114,9 +114,18 @@ describe('battle specs', function() {
 		console.log(bResults);
 		console.log(battle.getRobots());
 	});
-	it('should be such that playerTurns are set and adjusted', function() {
+	xit('should be such that playerTurns are set and adjusted', function() {
 		battle.setTurns(battle.getRobots()[1].turns);
 		battle.setTurns(battle.getTurns() -1);
 		expect(battle.getTurns()).toBe(1);
+	});
+	it('should be able to make decisions for the challenger', function() {
+		console.log('player health before', battle.getRobots()[0].health);
+		console.log('challenger position before', battle.getRobots()[1].position);
+		battle.getRobots()[1].setCurrentWeapon(0);
+		// battle.challengerTurn();
+		expect(0).toBe(0);
+		console.log('player health after', battle.getRobots()[0].health);
+		console.log('challenger position after', battle.getRobots()[1].position);
 	});
 });
