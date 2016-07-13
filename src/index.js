@@ -68,9 +68,9 @@ $(function() {
 	// 	console.log($('.build--weapons').val());
 	// });
 	$('.build--chooseRobot').on('click', function() {
+		$(this).attr('disabled', true);
 		let selectedModel = $('.build--robot').val();
 		robot = new Model[selectedModel]();
-		console.log(robot);
 	});
 	$('.build--addWeapon').on('click', function() {
 		let selectedWeapon = $('.build--weapons').val();
@@ -84,7 +84,7 @@ $(function() {
 			console.log(robot, robot.weaponsCapacity);
 			$('.build--display--weaponscap').empty();
 			$('.build--display--weaponscap').append(build_weapons({capacity: robot.weaponsCapacity, weapons: robot.weapons}));
-			if (robot.weaponsCapacity === 0) alert('zero');
+			if (robot.weaponsCapacity === 0) $('.build--addWeapon').attr('disabled', true);
 			// let currentCapacity = robot.weaponsCapacity - totalWeight(robot.weapons);
 		} else {
 			alert('you do not have enough capacity for this weapon');
@@ -143,5 +143,11 @@ $(function() {
 		console.log(fightResults);
 		$('.thunderdome--results').empty();
 		$('.thunderdome--results').append(results({fightResults: fightResults}));
+		if (fightResults.playerStatus === 'destroyed' && fightResults.challengerStatus === 'destroyed') {
+			alert('Mutually assured destruction has come to pass');
+		} else if (fightResults.playerStatus === 'destroyed') {
+			alert('Game over, man. You lost!');
+		} else if (fightResults.challengerStatus === 'destroyed') {
+			alert('victory is yours') }
 	});
 });
