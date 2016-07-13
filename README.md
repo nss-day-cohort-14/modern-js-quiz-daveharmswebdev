@@ -4,7 +4,9 @@ Run npm install at the command line after cloning.
 npm install
 ```
 
-then run `gulp`
+Then run `gulp`.
+
+Now you can play the game.
 
 #Play instructions
 1. Build robot by selecting from drop down box and select button.
